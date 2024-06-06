@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title"></title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="tired.png" type="image/x-icon">
+</head>
+<body>
+    <div id="hui" class="container">
+        <header id="hui">
+            <h1 id="header-title"></h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="schedule.html">Расписание занятий</a></li>
+                <li><a href="exams.html">Список зачетов и экзаменов</a></li>
+                <!-- Другие ссылки на будущие страницы -->
+            </ul>
+        </nav>
+        <main>
+            <!-- Здесь будет отображаться содержание -->
+        </main>
+        <footer>
+            <p id="group-info"></p>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Находим элементы на странице
+                    const pageTitle = document.getElementById('page-title');
+                    const headerTitle = document.getElementById('header-title');
+                    const footer = document.getElementById('group-info');
+                    
+                    const currentDate = new Date();
+                    const currentYear = currentDate.getFullYear();
+                    const currentMonth = currentDate.getMonth(); // Январь = 0, Декабрь = 11
+
+                    let groupYear = currentYear - (currentMonth < 6 ? 2022 : 2021);
+                    pageTitle.innerHTML = `Главная страница сайта группы ЗЭ-${groupYear}03`;
+                    headerTitle.innerHTML = `Главная страница сайта группы ЗЭ-${groupYear}03`;
+                    footer.innerHTML = `&copy; ${currentYear} Группа ЗЭ-${groupYear}03`;
+                });
+            </script>
+        </footer>
+    </div>
+</body>
+</html>

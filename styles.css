@@ -1,0 +1,457 @@
+/* Основные стили страницы */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+/* Контейнеры и разметка */
+.container {
+    min-height: 100%;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+header, footer {
+    background: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Стили шапки */
+header {
+    position: relative; /* Для позиционирования кнопки возврата */
+}
+
+.header-with-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Равномерно распределит пространство между элементами */
+}
+
+.header-with-selector h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #fff; /* Светлый текст для контраста с темным фоном */
+}
+
+#semester-selector {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 5px 10px;
+    padding-right: 20px; /* Дополнительное место справа для кастомной стрелки */
+    border: none;
+    background-color: transparent;
+    background-image: url('arrow.svg'); /* Путь к вашему SVG файлу */
+    background-repeat: no-repeat;
+    background-position: right 5px center; /* Позиционируем стрелку справа по центру */
+    background-size: 12px 12px; /* Устанавливаем размер стрелки */
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+}
+
+#semester-selector:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Небольшое изменение фона при наведении */
+}
+
+#semester-selector:focus {
+    outline: none;
+    border-color: initial;
+}
+
+/* При наведении добавляем немного стиля */
+#semester-selector:hover {
+    color: #ddd; /* Слегка осветлить текст при наведении для лучшего взаимодействия */
+}
+
+/* Стили кнопки возвращения */
+.back-button {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 8px 15px;
+    background-color: #ffc107;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #e0a800;
+}
+
+/* Навигационное меню */
+nav ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    background-color: #ffc107;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+nav ul li button,
+nav ul li a {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    display: inline-block;
+    color: #333;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+nav ul li button:hover,
+nav ul li a:hover {
+    background-color: #e0a800;
+}
+
+nav ul li button.active,
+nav ul li a.active {
+    color: #fff;
+    background-color: #333;
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+    nav ul li button,
+    nav ul li a {
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+/* Стилизация недельных кнопок */
+.week-selector {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.week-selector button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    color: #333;
+    border: 1px solid #bfbfbf;
+    cursor: pointer;
+    background-color: #eee;
+}
+
+.week-selector button:hover {
+    background-color: #555;
+}
+
+.week-selector button.active {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Стилизация основного содержимого */
+main {
+    flex-grow: 1;
+    padding: 20px;
+    background: #fff;
+}
+
+.activity {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #eee;
+    border-left: 4px solid #ffc107;
+}
+
+/* Стилизация таблицы расписания */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.schedule-table th,
+.schedule-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.schedule-table thead {
+    background-color: #333;
+    color: #fff;
+}
+
+.schedule-table tbody tr:nth-child(odd) {
+    background-color: #f7f7f7;
+}
+
+.schedule-table tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+
+.schedule-table tbody tr:hover {
+    background-color: #ffc107;
+    color: #333;
+}
+
+/* Адаптивные стили для маленьких экранов */
+@media screen and (max-width: 768px) {
+    .schedule-table {
+        font-size: 14px;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .schedule-table {
+        display: block;
+    }
+
+    .schedule-table thead {
+        display: none;
+    }
+
+    .schedule-table td {
+        display: block;
+        text-align: right;
+    }
+
+    .schedule-table td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+}
+
+/* Стилизация выбора отображения расписания */
+.display-mode-selector {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.display-mode-selector button {
+    display: block;
+    margin-bottom: 5px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #333;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.display-mode-selector button:hover {
+    background-color: #ffc107;
+}
+
+.display-mode-selector button.active {
+    background-color: #ffc107;
+    color: #333;
+}
+
+@media screen and (max-width: 600px) {
+    .display-mode-selector {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .display-mode-selector button {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+    }
+}
+
+.exam-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.exam-list li {
+    background-color: #eee;
+    border-left: 4px solid #ffc107;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Контейнер для содержания элемента списка */
+.list-item-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Отступ для текста элемента списка */
+.list-item-content > span {
+    margin-left: 10px;
+}
+
+/* Контейнер для чекбоксов */
+.passed-wrapper {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+/* Отдельные стили для чекбоксов */
+.passed-wrapper input[type="checkbox"] {
+    margin-left: 10px; /* Отступ между чекбоксами */
+    cursor: pointer;
+}
+
+/* Стили для разных цветов чекбоксов */
+.passed-wrapper input[type="checkbox"].completed {
+    accent-color: #4CAF50; /* Зеленый для выполнено */
+}
+
+.passed-wrapper input[type="checkbox"].passed {
+    accent-color: #FF5733; /* Оранжевый для сдано */
+}
+
+/* Стили для календаря экзаменов и зачетов */
+.exam-calendar {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+/* Стили для таблицы календаря экзаменов и зачетов */
+.exam-calendar tr:nth-child(even) {
+    background-color: #f2f2f2; /* Светло-серый цвет для четных строк */
+}
+
+.exam-calendar tr:nth-child(odd) {
+    background-color: #ffffff; /* Белый цвет для нечетных строк */
+}
+
+.exam-calendar tr:hover {
+    background-color: #ecebeb;
+    color: #333;
+}
+
+.exam-calendar td:hover {
+    background-color: #ecebeb;
+    color: #333;
+}
+
+.exam-calendar th {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.exam-calendar td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    vertical-align: middle;
+    min-height: 200px; /* Минимальная высота ячеек */
+}
+
+/* Стили для отдельных записей в ячейках календаря */
+.exam-calendar td div {
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer; /* Курсор в виде указателя для интерактивности */
+}
+
+/* Стили для подсветки выходных дней, если потребуется */
+.exam-calendar td.weekend {
+    background-color: #eee;
+}
+
+/* Эффекты наведения для записей */
+.exam-calendar td div:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 600px) {
+    .exam-calendar th, .exam-calendar td {
+        padding: 8px;
+        min-width: 50px; /* Уменьшаем минимальную ширину */
+        font-size: 0.8em; /* Уменьшаем размер шрифта */
+    }
+
+    .exam-calendar td {
+        min-height: 80px; /* Уменьшаем высоту ячеек */
+    }
+}
+
+.exam-calendar .exam {
+    background-color: #ffcccc; /* Тускло-красный цвет для экзаменов */
+    padding: 5px;
+    margin: 2px;
+}
+
+.exam-calendar .credit {
+    background-color: #ccffcc; /* Тускло-зеленый цвет для зачётов */
+    padding: 5px;
+    margin: 2px;
+}
+
+.exam-calendar .graded-credit {
+    background-color: #ccccff; /* Тускло-синий цвет для зачётов с оценкой */
+    padding: 5px;
+    margin: 2px;
+}
+
+.exam-calendar .coursework {
+    background-color: #fff3cc; /* Тускло-желтый цвет для курсовых работ */
+    padding: 5px;
+    margin: 2px;
+}
+
+.exam-calendar .exam:hover {
+    background-color: #ff6666; /* Ярко-красный цвет при наведении для экзаменов */
+}
+
+.exam-calendar .credit:hover {
+    background-color: #66ff66; /* Ярко-зеленый цвет при наведении для зачётов */
+}
+
+.exam-calendar .graded-credit:hover {
+    background-color: #6666ff; /* Ярко-синий цвет при наведении для зачётов с оценкой */
+}
+
+.exam-calendar .coursework:hover {
+    background-color: #ffcc66; /* Ярко-желтый цвет при наведении для курсовых работ */
+}

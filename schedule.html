@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title"></title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="book.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">&#11013;</a>
+            <h1 id="header-title"></h1>
+            <select id="semester-selector" onchange="switchSemester(this.value)">
+                <!-- Семестры будут добавлены динамически -->
+            </select>
+        </header>
+        <div class="display-mode-selector">
+            <button id="mode-list" onclick="setDisplayMode('list')">&#128196;</button>
+            <button id="mode-table" onclick="setDisplayMode('table')">&#128202;</button>
+        </div>
+        <nav>
+            <ul>
+                <li><button onclick="loadDaySchedule('monday', currentWeek)">Понедельник</button></li>
+                <li><button onclick="loadDaySchedule('tuesday', currentWeek)">Вторник</button></li>
+                <li><button onclick="loadDaySchedule('wednesday', currentWeek)">Среда</button></li>
+                <li><button onclick="loadDaySchedule('thursday', currentWeek)">Четверг</button></li>
+                <li><button onclick="loadDaySchedule('friday', currentWeek)">Пятница</button></li>
+                <li><button onclick="loadDaySchedule('saturday', currentWeek)">Суббота</button></li>
+            </ul>
+        </nav>
+        <div class="week-selector">
+            <button onclick="loadWeekSchedule(0)">Неделя 1</button>
+            <button onclick="loadWeekSchedule(1)">Неделя 2</button>
+            <button onclick="loadWeekSchedule(2)">Неделя 3</button>
+        </div>
+        <main id="schedule-content">
+            <!-- Здесь будет отображаться расписание -->
+        </main>
+        <footer>
+            <p id="group-info"></p>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Находим элементы на странице
+                    const pageTitle = document.getElementById('page-title');
+                    const headerTitle = document.getElementById('header-title');
+                    const footer = document.getElementById('group-info');
+                    
+                    const currentDate = new Date();
+                    const currentYear = currentDate.getFullYear();
+                    const currentMonth = currentDate.getMonth(); // Январь = 0, Декабрь = 11
+
+                    let groupYear = currentYear - (currentMonth < 6 ? 2022 : 2021);
+                    pageTitle.innerHTML = `Расписание группы ЗЭ-${groupYear}03`;
+                    headerTitle.innerHTML = `Расписание группы ЗЭ-${groupYear}03`;
+                    footer.innerHTML = `&copy; ${currentYear} Группа ЗЭ-${groupYear}03`;
+                });
+            </script>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

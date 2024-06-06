@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title"></title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="icon" href="grade.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">&#11013;</a>
+            <h1 id="header-title"></h1>
+            <select id="semester-selector" onchange="switchSemester(this.value)">
+                <!-- Семестры будут добавлены динамически -->
+            </select>
+        </header>
+        <div class="display-mode-selector">
+            <button id="mode-list" onclick="setDisplayMode('list')">📃</button>
+            <button id="mode-calendar" onclick="setDisplayMode('calendar')">🗓️</button>
+        </div>
+        <main id="exam-content">
+            <!-- Здесь будет отображаться список экзаменов -->
+        </main>
+        <footer>
+            <p id="group-info"></p>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Находим элементы на странице
+                    const pageTitle = document.getElementById('page-title');
+                    const headerTitle = document.getElementById('header-title');
+                    const footer = document.getElementById('group-info');
+                    
+                    const currentDate = new Date();
+                    const currentYear = currentDate.getFullYear();
+                    const currentMonth = currentDate.getMonth(); // Январь = 0, Декабрь = 11
+
+                    let groupYear = currentYear - (currentMonth < 6 ? 2022 : 2021);
+                    pageTitle.innerHTML = `Экзамены и Зачеты группы ЗЭ-${groupYear}03`;
+                    headerTitle.innerHTML = `Экзамены и Зачеты группы ЗЭ-${groupYear}03`;
+                    footer.innerHTML = `&copy; ${currentYear} Группа ЗЭ-${groupYear}03`;
+                });
+            </script>
+        </footer>
+    </div>
+    <script src="exams.js"></script>
+</body>
+</html>
